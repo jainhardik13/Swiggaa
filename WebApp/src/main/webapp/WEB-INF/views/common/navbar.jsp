@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+<!-- Enhanced Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light navbar-enhanced sticky-top">
     <div class="container">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/">
-            <i class="fas fa-utensils me-2"></i>Swiggaa
+        <a class="navbar-brand fw-bold" href="${pageContext.request.contextPath}/" style="font-size: 1.5rem;">
+            <i class="fas fa-utensils me-2 text-primary"></i><span class="gradient-text">Swiggaa</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
@@ -13,20 +13,27 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <!-- Search Bar (for logged in users) -->
             <c:if test="${not empty sessionScope.user}">
-                <form class="d-flex mx-auto" style="width: 300px;" action="${pageContext.request.contextPath}/menu/search" method="get">
+                <form class="d-flex mx-auto my-2 my-lg-0" style="max-width: 400px; width: 100%;" 
+                      action="${pageContext.request.contextPath}/menu/search" method="get">
                     <div class="input-group">
-                        <input class="form-control" type="search" name="query" placeholder="Search for food..." aria-label="Search">
-                        <button class="btn btn-outline-light" type="submit">
+                        <input class="form-control form-control-enhanced" type="search" name="query" 
+                               placeholder="Search for food..." aria-label="Search">
+                        <button class="btn btn-gradient-primary" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
                 </form>
             </c:if>
 
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/">
                         <i class="fas fa-home me-1"></i>Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/about">
+                        <i class="fas fa-info-circle me-1"></i>About
                     </a>
                 </li>
                 <c:choose>
@@ -38,9 +45,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link position-relative" href="#" onclick="openCartPopup()" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <a class="nav-link position-relative" href="${pageContext.request.contextPath}/cart">
                                 <i class="fas fa-shopping-cart me-1"></i>Cart
-                                <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning" style="display: none;">
+                                <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-gradient-warning" style="display: none;">
                                     0
                                 </span>
                             </a>
@@ -56,22 +63,22 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
                                 <i class="fas fa-user-circle me-1"></i>${sessionScope.user}
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg">
                                 <li>
                                     <a class="dropdown-item" href="${pageContext.request.contextPath}/dashboard">
-                                        <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                                        <i class="fas fa-tachometer-alt me-2 text-primary"></i>Dashboard
                                     </a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="${pageContext.request.contextPath}/profile">
-                                        <i class="fas fa-user-edit me-2"></i>Profile
+                                        <i class="fas fa-user-edit me-2 text-primary"></i>Profile
                                     </a>
                                 </li>
                                 <li><hr class="dropdown-divider"></li>
                                 <c:if test="${sessionScope.role == 'ROLE_ADMIN'}">
                                     <li>
                                         <a class="dropdown-item" href="${pageContext.request.contextPath}/admin">
-                                            <i class="fas fa-cogs me-2"></i>Admin Panel
+                                            <i class="fas fa-cogs me-2 text-warning"></i>Admin Panel
                                         </a>
                                     </li>
                                     <li><hr class="dropdown-divider"></li>
@@ -87,12 +94,17 @@
                     <c:otherwise>
                         <!-- Guest user menu -->
                         <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/auth/login">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/contact">
+                                <i class="fas fa-envelope me-1"></i>Contact
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary btn-sm ms-2" href="${pageContext.request.contextPath}/auth/login">
                                 <i class="fas fa-sign-in-alt me-1"></i>Login
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/auth/register">
+                            <a class="btn btn-gradient-primary btn-sm ms-2" href="${pageContext.request.contextPath}/auth/register">
                                 <i class="fas fa-user-plus me-1"></i>Register
                             </a>
                         </li>
