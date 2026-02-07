@@ -1,0 +1,35 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "SwiggaaFrontendApplication",
+            "request": "launch",
+            "mainClass": "com.swiggaa.frontend.SwiggaaFrontendApplication",
+            "projectName": "swiggaa-frontend"
+        },
+        {
+            "type": "java",
+            "name": "OrderServiceApplication",
+            "request": "launch",
+            "mainClass": "com.Swiggaa.order_service.OrderServiceApplication",
+            "projectName": "order-service"
+        },
+        {
+            "type": "java",
+            "name": "MenuServiceApplication",
+            "request": "launch",
+            "mainClass": "com.Swiggaa.menu_service.MenuServiceApplication",
+            "projectName": "menu-service"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-AuthServiceApplication<auth-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.Swiggaa.auth_service.AuthServiceApplication",
+            "projectName": "auth-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
